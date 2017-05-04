@@ -1,0 +1,53 @@
+<h1>
+  hahahaha candidates list
+</h1>
+<%= link_to "add candidate" , new_candidate_path, class: "btn btn-primary btn"%>
+
+<table class= "table table-hover">
+  <thead>
+     <tr>
+       <td>/</td>
+       <td>name</td>
+       <td>age</td>
+       <td>votes</td>
+       <td>politics</td>
+       
+       <td></td>
+     </tr>
+  </thead>
+  
+  
+  <tbody>
+     <% @candidates.each do |candidate| %>
+       <tr>
+         <td><%= link_to "vote!", vote_candidate_path(candidate),class:"btn btn-xs btn-danger",data:{ confirm:"vote this one?"},method:"post"%></td>  
+       <td> <%= link_to candidate.display_name, candidate %></td>
+       
+       <td><%= candidate.age %></td>
+       <td><%= candidate.logs.size %></td>
+       <td><%= candidate.politics %></td>
+       <td>
+          <%= link_to "edit", edit_candidate_path(candidate), class: "btn btn-success btn-xs" %>
+          <%= link_to "delete", candidate, method: "delete", data: { confirm: 'delete?!' } , class: "btn btn-danger btn-xs"%>
+       </td>
+     </tr>
+      <% end %>
+  </tbody>
+
+</table>
+
+
+
+
+
+
+<!-- <ul>
+  <% @candidates.each do |candidate| %>
+  <li>
+    <%= link_to candidate.name, candidate %>
+    <%= link_to "edit", edit_candidate_path(candidate) , class: "btn btn-primary btn-xs"%>
+    <%= link_to "delete", candidate, method: "delete", data: { confirm: 'delete?!' } , class: "btn btn-primary btn-xs"%>
+  </li>
+<% end %>
+</ul>
+ -->
